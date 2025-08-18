@@ -1,0 +1,59 @@
+{
+  "biblioteca": [
+    {
+      "type": "Book",
+      "title": "Il Grande Gatsby",
+      "year": 1925,
+      "author": "F. Scott Fitzgerald",
+      "isbn": "978-0-7432-7356-5",
+      "publisher": "Scribner",
+      "coverImagePath": "resources/images/great_gatsby.jpg"
+    },
+    {
+      "type": "Book",
+      "title": "Il Buio Oltre la Siepe",
+      "year": 1960,
+      "author": "Harper Lee",
+      "isbn": "978-0-06-112008-4",
+      "publisher": "J.B. Lippincott & Co.",
+      "coverImagePath": "resources/images/to_kill_a_mockingbird.jpg"
+    },
+    {
+      "type": "Film",
+      "title": "Ritorno al Futuro",
+      "year": 1985,
+      "director": "Robert Zemeckis",
+      "duration": 116,
+      "genre": "Fantascienza",
+      "coverImagePath": "resources/images/back_to_future.jpg"
+    },
+    {
+      "type": "Film",
+      "title": "Viale del Tramonto",
+      "year": 1950,
+      "director": "Billy Wilder",
+      "duration": 110,
+      "genre": "Noir",
+      "coverImagePath": "resources/images/sunset_boulevard.jpg"
+    },
+    {
+      "type": "MagazineArticle",
+      "title": "La Morte di una Stella",
+      "year": 2023,
+      "author": "Dr. Maria Rossi",
+      "magazine": "Nature",
+      "doi": "10.1038/nature.2023.12345",
+      "coverImagePath": "resources/images/nature_death_star.png"
+    },
+    {
+      "type": "MagazineArticle",
+      "title": "Stress da Calore negli Ecosistemi",
+      "year": 2023,
+      "author": "Dr. Giovanni Bianchi",
+      "magazine": "Nature",
+      "doi": "10.1038/nature.2023.67890",
+      "coverImagePath": "resources/images/nature_heat_stress.png"
+    }
+  ]
+}
+
