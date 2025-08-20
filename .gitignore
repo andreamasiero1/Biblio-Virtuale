@@ -15,4 +15,6 @@ ui_*
 .qmake.stash
 build/
 biblioteca_virtuale.app/
+Makefile
+persistence/XmlSerializer.h
 
