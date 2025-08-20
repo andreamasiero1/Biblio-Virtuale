@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Qt/qmake build artifacts
+*.o
+*.obj
+*.dll
+*.so
+*.dylib
+*.a
+*.pro.user
+moc_*
+ui_*
+*.qm
+.qmake.stash
+build/
+biblioteca_virtuale.app/
+

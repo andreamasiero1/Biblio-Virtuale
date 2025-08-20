@@ -20,7 +20,6 @@ SOURCES += \
     view/MediaWidgetVisitor.cpp \
     view/AddMediaDialog.cpp \
     view/EditMediaDialog.cpp \
-    view/MediaEditVisitor.cpp \
     view/MediaCollectorVisitor.cpp \
     persistence/JsonSerializer.cpp
 
@@ -41,7 +40,6 @@ HEADERS += \
     view/MediaWidgetVisitor.h \
     view/AddMediaDialog.h \
     view/EditMediaDialog.h \
-    view/MediaEditVisitor.h \
     view/MediaCollectorVisitor.h \
     persistence/JsonSerializer.h
 
