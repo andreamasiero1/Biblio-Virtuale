@@ -2,6 +2,7 @@
 #include "Book.h"
 #include "Film.h"
 #include "MagazineArticle.h"
+#include "../view/MediaCollectorVisitor.h"
 
 /**
  * Costruttore di default della Biblioteca.
@@ -150,36 +151,29 @@ QList<Media *> Biblioteca::getTuttiMedia() const
 }
 
 /**
- * Ottiene tutti i Libri presenti nella biblioteca.
- * Filtra la collezione utilizzando dynamic_cast per identificare solo gli oggetti Book.
- * @return Lista di puntatori ai soli oggetti Book contenuti nella biblioteca
+ * Raccoglie Media per tipo utilizzando il Pattern Visitor.
+ * Questo metodo implementa polimorfismo non banale attraverso il Visitor pattern:
+ * - Ogni tipo di Media (Book, Film, MagazineArticle) ha comportamento visitor diverso
+ * - Il filtering avviene tramite polimorfismo invece che controllo di tipo esplicito
+ * - Dimostra uso sofisticato del polimorfismo per operazioni su collezioni
+ * @param filterType Tipo di Media da raccogliere
+ * @return Lista di Media che corrispondono al filtro specificato
  */
-QList<Media *> Biblioteca::getLibri() const
+QList<Media *> Biblioteca::collectMediaByType(MediaFilter::FilterType filterType) const
 {
-    return mediaContainer.find([](Media *media)
-                               { return dynamic_cast<Book *>(media) != nullptr; });
-}
+    MediaCollectorVisitor collector(filterType);
 
-/**
- * Ottiene tutti i Film presenti nella biblioteca.
- * Filtra la collezione utilizzando dynamic_cast per identificare solo gli oggetti Film.
- * @return Lista di puntatori ai soli oggetti Film contenuti nella biblioteca
- */
-QList<Media *> Biblioteca::getFilm() const
-{
-    return mediaContainer.find([](Media *media)
-                               { return dynamic_cast<Film *>(media) != nullptr; });
-}
+    // Applica il visitor a ogni Media - comportamento polimorfo per ogni tipo
+    QList<Media *> allMedia = getTuttiMedia();
+    for (Media *media : allMedia)
+    {
+        if (media)
+        {
+            media->accept(collector); // Polimorfismo: ogni Media chiama visit() appropriato
+        }
+    }
 
-/**
- * Ottiene tutti gli Articoli di Rivista presenti nella biblioteca.
- * Filtra la collezione utilizzando dynamic_cast per identificare solo gli oggetti MagazineArticle.
- * @return Lista di puntatori ai soli oggetti MagazineArticle contenuti nella biblioteca
- */
-QList<Media *> Biblioteca::getArticoli() const
-{
-    return mediaContainer.find([](Media *media)
-                               { return dynamic_cast<MagazineArticle *>(media) != nullptr; });
+    return collector.getCollectedMedia();
 }
 
 /**

@@ -21,6 +21,7 @@ SOURCES += \
     view/AddMediaDialog.cpp \
     view/EditMediaDialog.cpp \
     view/MediaEditVisitor.cpp \
+    view/MediaCollectorVisitor.cpp \
     persistence/JsonSerializer.cpp
 
 HEADERS += \
@@ -41,6 +42,7 @@ HEADERS += \
     view/AddMediaDialog.h \
     view/EditMediaDialog.h \
     view/MediaEditVisitor.h \
+    view/MediaCollectorVisitor.h \
     persistence/JsonSerializer.h
 
 # Default rules for deployment.

@@ -142,22 +142,22 @@ QList<Media *> MainWindow::getFilteredMedia() const
 
     QList<Media *> allMedia;
 
-    // Get all media based on type filter
+    // Get all media based on type filter using Visitor pattern
     if (currentFilter == "all")
     {
         allMedia = biblioteca.getTuttiMedia();
     }
     else if (currentFilter == "book")
     {
-        allMedia = biblioteca.getLibri();
+        allMedia = biblioteca.collectMediaByType(MediaFilter::FilterType::BOOKS_ONLY);
     }
     else if (currentFilter == "film")
     {
-        allMedia = biblioteca.getFilm();
+        allMedia = biblioteca.collectMediaByType(MediaFilter::FilterType::FILMS_ONLY);
     }
     else if (currentFilter == "article")
     {
-        allMedia = biblioteca.getArticoli();
+        allMedia = biblioteca.collectMediaByType(MediaFilter::FilterType::ARTICLES_ONLY);
     }
 
     // Apply search filter if present

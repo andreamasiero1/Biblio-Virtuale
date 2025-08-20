@@ -7,26 +7,43 @@
 #include "Container.h"
 #include "Exceptions.h"
 
-class Biblioteca {
+// Forward declaration per evitare dipendenza circolare
+class MediaCollectorVisitor;
+
+// Enum per i tipi di filtro Media
+namespace MediaFilter
+{
+    enum class FilterType
+    {
+        ALL,
+        BOOKS_ONLY,
+        FILMS_ONLY,
+        ARTICLES_ONLY
+    };
+}
+
+class Biblioteca
+{
 public:
     Biblioteca();
     ~Biblioteca();
-    
-    // Costruttore di copia e operatore di assegnazione per gestione corretta della memoria
-    Biblioteca(const Biblioteca& other);
-    Biblioteca& operator=(const Biblioteca& other);
 
-    void aggiungiMedia(Media* media);
-    bool rimuoviMedia(Media* media);
+    // Costruttore di copia e operatore di assegnazione per gestione corretta della memoria
+    Biblioteca(const Biblioteca &other);
+    Biblioteca &operator=(const Biblioteca &other);
+
+    void aggiungiMedia(Media *media);
+    bool rimuoviMedia(Media *media);
     void rimuoviMediaAt(int index);
-    Media* getMediaAt(int index) const;
-    QList<Media*> cercaPerTitolo(const QString& titolo) const;
-    QList<Media*> cercaPerAnno(int anno) const;
-    QList<Media*> getTuttiMedia() const;
-    QList<Media*> getLibri() const;
-    QList<Media*> getFilm() const;
-    QList<Media*> getArticoli() const;
-    
+    Media *getMediaAt(int index) const;
+    QList<Media *> cercaPerTitolo(const QString &titolo) const;
+    QList<Media *> cercaPerAnno(int anno) const;
+    QList<Media *> getTuttiMedia() const;
+
+    // Metodo che utilizza Pattern Visitor per raccogliere Media per tipo
+    // Sostituisce getLibri(), getFilm(), getArticoli() con polimorfismo non banale
+    QList<Media *> collectMediaByType(MediaFilter::FilterType filterType) const;
+
     void svuota();
     int dimensione() const;
     bool isEmpty() const;
@@ -36,4 +53,3 @@ private:
 };
 
 #endif // BIBLIOTECA_H
-
